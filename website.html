@@ -1,0 +1,138 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="zh-CN">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>修复版祝福网页</title>-->
+<!--    <style>-->
+<!--        body {-->
+<!--            background: #fff0f5;-->
+<!--            margin: 0;-->
+<!--            min-height: 100vh;-->
+<!--            display: grid;-->
+<!--            place-items: center;-->
+<!--        }-->
+<!--        .content {-->
+<!--            padding: 2rem;-->
+<!--            background: white;-->
+<!--            border-radius: 12px;-->
+<!--            box-shadow: 0 4px 20px rgba(0,0,0,0.1);-->
+<!--        }-->
+<!--    </style>-->
+<!--</head>-->
+<!--<body>-->
+<!--    <div class="content">-->
+<!--        <h1>🎉 李老师新婚快乐！</h1>-->
+<!--        <p>测试内容显示正常</p>-->
+<!--    </div>-->
+<!--</body>-->
+<!--</html>-->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>致老师的结婚祝福</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&display=swap');
+
+        body {
+            background: #fff0f5;
+            font-family: 'Ma Shan Zheng', cursive;
+            min-height: 200vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        @keyframes petalFall {
+            0% { transform: translate(-50%,-10%) rotate(0deg) scale(1); }
+            100% { transform: translate(50vw,110vh) rotate(360deg) scale(0.5); }
+        }
+
+        /* 文字容器 */
+        .message-container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 30px;
+            opacity: 0;
+            animation: containerIn 2s ease forwards;
+            position: relative;
+        }
+
+        /* 文字动画 */
+        .text-line {
+            color: #7a4b5a;
+            font-size: 2.2em;
+            line-height: 1.8;
+            margin: 30px 0;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: textFlow 1s ease forwards;
+        }
+
+        .message-container .text-line:nth-child(n + 3) {
+            text-indent: 1em;
+        }
+
+        @keyframes containerIn { to { opacity: 1; } }
+        @keyframes textFlow { to { opacity: 1; transform: translateY(0); } }
+
+        /* 移动端适配 */
+        @media (max-width: 768px) {
+            .text-line { font-size: 1.8em; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 完整祝福文字 -->
+    <div class="message-container">
+        <div class="text-line" style="animation-delay:0s;color:#ff69b4; text-align:center">✦ 祝福卡 ✦</div>
+        <div class="text-line" style="animation-delay:1s">Hello,陈老师：</div>
+        <div class="text-line" style="animation-delay:3s">听说幸福来敲门啦！</div>
+        <div class="text-line" style="animation-delay:5s">以前你总看我们懵懂幼稚</div>
+        <div class="text-line" style="animation-delay:7s">现在终于轮到我们见证你人生的重要时刻了！</div>
+        <div class="text-line" style="animation-delay:9s;color:#ff69b4; text-align:center">✦ 藏在心里的话 ✦</div>
+        <div class="text-line" style="animation-delay:11s">很高心终于有人要接管</div>
+        <div class="text-line" style="animation-delay:13s">你这位永远的大孩子了</div>
+        <div class="text-line" style="animation-delay:15s">谢谢你在稚嫩的岁月里</div>
+        <div class="text-line" style="animation-delay:17s">给予我们朋友般的陪伴</div>
+        <div class="text-line" style="animation-delay:19s">（当然，我也能很自豪地说我们数学是美术老师教的）</div>
+        <div class="text-line" style="animation-delay:21s">愿你眼眸永远闪烁星光</div>
+        <div class="text-line" style="animation-delay:23s">如你教我们的那样</div>
+        <div class="text-line" style="animation-delay:25s">永葆好奇，永怀热忱</div>
+        <div class="text-line" style="animation-delay:27s">祝福你们：<br>❤ 朝朝暮暮皆浪漫 ❤<br>岁岁年年共婵娟</div>
+        <div class="text-line" style="animation-delay:29s; color:#ff69b4; text-align:center">✦ 时光不老 ✦ 良辰永伴 ✦</div>
+        <div class="text-line" style="animation-delay:31s">—— 被您温暖过的小星星们</div>
+    </div>
+
+    <!-- 自动滚动控制 -->
+    <script>
+        window.addEventListener('load', function() {
+
+            // 自动滚动设置
+            const textLines = document.querySelectorAll('.text-line');
+            const lastLine = textLines[textLines.length - 1];
+            const endPosition = lastLine.offsetTop + lastLine.offsetHeight;
+            const scrollSpeed = 0.2;
+            let currentPosition = window.pageYOffset;
+            let isAutoScrolling = true;
+
+            // 滚动动画
+            function scrollAnimation() {
+                currentPosition += scrollSpeed;
+                window.scrollTo(0, currentPosition);
+
+                if (currentPosition < endPosition && isAutoScrolling) {
+                    requestAnimationFrame(scrollAnimation);
+                }
+            }
+
+            // 用户交互处理
+            window.addEventListener('wheel', () => isAutoScrolling = false);
+            window.addEventListener('touchmove', () => isAutoScrolling = false);
+
+            // 开始滚动
+            scrollAnimation();
+        });
+    </script>
+</body>
+</html>
